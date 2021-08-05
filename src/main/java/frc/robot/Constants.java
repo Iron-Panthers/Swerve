@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj.kinematics.SwerveDriveKinematics;
 
-/** Add your docs here. */
+/** Class to contain all constants */
 public final class Constants {
   public static final class DriveConstants {
     public static final int kFrontLeftDriveMotorPort = 1;
@@ -30,9 +30,9 @@ public final class Constants {
     public static final boolean kRearLeftTurningEncoderReversed = true;
     public static final boolean kRearRightTurningEncoderReversed = true;
 
-    public static final boolean kFrontLeftDriveReversed = true;
-    public static final boolean kFrontRightDriveReversed = false;
-    public static final boolean kRearLeftDriveReversed = true;
+    public static final boolean kFrontLeftDriveReversed = false;
+    public static final boolean kFrontRightDriveReversed = true;
+    public static final boolean kRearLeftDriveReversed = false;
     public static final boolean kRearRightDriveReversed = true;
 
     private static final double kDistanceBetweenWheels = 2 * 0.1016;
@@ -43,9 +43,9 @@ public final class Constants {
         new Translation2d(kWheelBase / 2, kTrackWidth / 2), new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
         new Translation2d(-kWheelBase / 2, kTrackWidth / 2), new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
-    public static final boolean kGyroReversed = false; // clockwise positive?
+    public static final boolean kGyroReversed = false;
 
-    public static final double kSpeedLimit = 3; // TODO consider meaning of value more carefully (m/s)
+    public static final double kMaxSpeedMetersPerSecond = 0.5; // METERS PER SECOND (CONFIRMED)
   }
 
   public static final class ModuleConstants {
@@ -58,12 +58,13 @@ public final class Constants {
     public static final double kDriveEncoderDistancePerPulse = 0;
 
     // NOT tuned
-    public static final double kP_turn = 0.1;
+    public static final double kP_turn = 0.5;
     public static final double kP_drive = 1;
 
-    // angles at effective 0 for absolute encoders
+    // angles at effective module 0 for absolute encoders
+    // Since magnetic encoders read some arbitrary value at "true zero"
     // fl, fr, bl, br
-    public static final double kModuleOffsets[] = { 138.779 - 2.28, 85.254 + 3.87, 242.490 - 1.41, 132.803 + 4.92 };
+    public static final double kModuleOffsets[] = { 315.18, 265.3, 63.4, 320.4 };
   }
 
   public static final class OIConstants {
